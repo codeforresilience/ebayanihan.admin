@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectViewDlg" widgetVar="ProjectViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProjectTitle}">
+            <h:form id="ProjectViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProjectLabel_pkProjectId}"/>
+                        <h:outputText value="#{projectController.selected.pkProjectId}" title="#{bundle.ViewProjectTitle_pkProjectId}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_projectTitle}"/>
+                        <h:outputText value="#{projectController.selected.projectTitle}" title="#{bundle.ViewProjectTitle_projectTitle}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_projectDescription}"/>
+                        <h:outputText value="#{projectController.selected.projectDescription}" title="#{bundle.ViewProjectTitle_projectDescription}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_projectCmslink}"/>
+                        <h:outputText value="#{projectController.selected.projectCmslink}" title="#{bundle.ViewProjectTitle_projectCmslink}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_startDate}"/>
+                        <h:outputText value="#{projectController.selected.startDate}" title="#{bundle.ViewProjectTitle_startDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjectLabel_endDate}"/>
+                        <h:outputText value="#{projectController.selected.endDate}" title="#{bundle.ViewProjectTitle_endDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjectLabel_projectRegistrationDate}"/>
+                        <h:outputText value="#{projectController.selected.projectRegistrationDate}" title="#{bundle.ViewProjectTitle_projectRegistrationDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProjectLabel_maxVolunteerCount}"/>
+                        <h:outputText value="#{projectController.selected.maxVolunteerCount}" title="#{bundle.ViewProjectTitle_maxVolunteerCount}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_projectStatus}"/>
+                        <h:outputText value="#{projectController.selected.projectStatus}" title="#{bundle.ViewProjectTitle_projectStatus}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_addressStreet}"/>
+                        <h:outputText value="#{projectController.selected.addressStreet}" title="#{bundle.ViewProjectTitle_addressStreet}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_addressUnit}"/>
+                        <h:outputText value="#{projectController.selected.addressUnit}" title="#{bundle.ViewProjectTitle_addressUnit}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_fkCfgBarangay}"/>
+                        <h:outputText value="#{projectController.selected.fkCfgBarangay}" title="#{bundle.ViewProjectTitle_fkCfgBarangay}"/>
+                        <h:outputText value="#{bundle.ViewProjectLabel_fkAppuserId}"/>
+                        <h:outputText value="#{projectController.selected.fkAppuserId}" title="#{bundle.ViewProjectTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProjectViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

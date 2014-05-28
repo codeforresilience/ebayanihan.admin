@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProfileEditDlg" widgetVar="ProfileEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProfileTitle}">
+            <h:form id="ProfileEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profileController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProfileLabel_pkProfileId}" for="pkProfileId" />
+                        <p:inputText id="pkProfileId" value="#{profileController.selected.pkProfileId}" title="#{bundle.EditProfileTitle_pkProfileId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_pkProfileId}"/>
+                        <p:outputLabel value="#{bundle.EditProfileLabel_mobileNumber}" for="mobileNumber" />
+                        <p:inputText id="mobileNumber" value="#{profileController.selected.mobileNumber}" title="#{bundle.EditProfileTitle_mobileNumber}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_businessEmail}" for="businessEmail" />
+                        <p:inputText id="businessEmail" value="#{profileController.selected.businessEmail}" title="#{bundle.EditProfileTitle_businessEmail}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_landline}" for="landline" />
+                        <p:inputText id="landline" value="#{profileController.selected.landline}" title="#{bundle.EditProfileTitle_landline}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressZipCode}" for="addressZipCode" />
+                        <p:inputText id="addressZipCode" value="#{profileController.selected.addressZipCode}" title="#{bundle.EditProfileTitle_addressZipCode}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressStreetSubdivision}" for="addressStreetSubdivision" />
+                        <p:inputText id="addressStreetSubdivision" value="#{profileController.selected.addressStreetSubdivision}" title="#{bundle.EditProfileTitle_addressStreetSubdivision}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressRoomFloorUnit}" for="addressRoomFloorUnit" />
+                        <p:inputText id="addressRoomFloorUnit" value="#{profileController.selected.addressRoomFloorUnit}" title="#{bundle.EditProfileTitle_addressRoomFloorUnit}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_googleMap}" for="googleMap" />
+                        <p:inputText id="googleMap" value="#{profileController.selected.googleMap}" title="#{bundle.EditProfileTitle_googleMap}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_identificationNoType}" for="identificationNoType" />
+                        <p:inputText id="identificationNoType" value="#{profileController.selected.identificationNoType}" title="#{bundle.EditProfileTitle_identificationNoType}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_identificationNo}" for="identificationNo" />
+                        <p:inputText id="identificationNo" value="#{profileController.selected.identificationNo}" title="#{bundle.EditProfileTitle_identificationNo}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_emergencyPersonName}" for="emergencyPersonName" />
+                        <p:inputText id="emergencyPersonName" value="#{profileController.selected.emergencyPersonName}" title="#{bundle.EditProfileTitle_emergencyPersonName}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_emergencyContactNo}" for="emergencyContactNo" />
+                        <p:inputText id="emergencyContactNo" value="#{profileController.selected.emergencyContactNo}" title="#{bundle.EditProfileTitle_emergencyContactNo}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_privacyLevel}" for="privacyLevel" />
+                        <p:inputText id="privacyLevel" value="#{profileController.selected.privacyLevel}" title="#{bundle.EditProfileTitle_privacyLevel}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_siteLink}" for="siteLink" />
+                        <p:inputText id="siteLink" value="#{profileController.selected.siteLink}" title="#{bundle.EditProfileTitle_siteLink}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_regularJob}" for="regularJob" />
+                        <p:inputText id="regularJob" value="#{profileController.selected.regularJob}" title="#{bundle.EditProfileTitle_regularJob}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_remarks}" for="remarks" />
+                        <p:inputText id="remarks" value="#{profileController.selected.remarks}" title="#{bundle.EditProfileTitle_remarks}" />
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressFkCfgStateprovinceId}" for="addressFkCfgStateprovinceId" />
+                        <p:selectOneMenu id="addressFkCfgStateprovinceId" value="#{profileController.selected.addressFkCfgStateprovinceId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_addressFkCfgStateprovinceId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cfgStateprovinceController.itemsAvailableSelectOne}"
+                                           var="addressFkCfgStateprovinceIdItem"
+                                           itemValue="#{addressFkCfgStateprovinceIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressFkCfgCountryId}" for="addressFkCfgCountryId" />
+                        <p:selectOneMenu id="addressFkCfgCountryId" value="#{profileController.selected.addressFkCfgCountryId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_addressFkCfgCountryId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cfgCountryController.itemsAvailableSelectOne}"
+                                           var="addressFkCfgCountryIdItem"
+                                           itemValue="#{addressFkCfgCountryIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressFkCfgCitytownId}" for="addressFkCfgCitytownId" />
+                        <p:selectOneMenu id="addressFkCfgCitytownId" value="#{profileController.selected.addressFkCfgCitytownId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_addressFkCfgCitytownId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cfgCitytownController.itemsAvailableSelectOne}"
+                                           var="addressFkCfgCitytownIdItem"
+                                           itemValue="#{addressFkCfgCitytownIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProfileLabel_addressFkCfgBarangayId}" for="addressFkCfgBarangayId" />
+                        <p:selectOneMenu id="addressFkCfgBarangayId" value="#{profileController.selected.addressFkCfgBarangayId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_addressFkCfgBarangayId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cfgBarangayController.itemsAvailableSelectOne}"
+                                           var="addressFkCfgBarangayIdItem"
+                                           itemValue="#{addressFkCfgBarangayIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProfileLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{profileController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditProfileRequiredMessage_fkAppuserId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{profileController.update}" value="#{bundle.Save}" update="display,:ProfileListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProfileEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProfileEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

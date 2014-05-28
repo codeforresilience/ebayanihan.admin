@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgPaymentmethodCreateDlg" widgetVar="CfgPaymentmethodCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCfgPaymentmethodTitle}">
+            <h:form id="CfgPaymentmethodCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgPaymentmethodController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCfgPaymentmethodLabel_pkCfgPaymentmethodId}" for="pkCfgPaymentmethodId" />
+                        <p:inputText id="pkCfgPaymentmethodId" value="#{cfgPaymentmethodController.selected.pkCfgPaymentmethodId}" title="#{bundle.CreateCfgPaymentmethodTitle_pkCfgPaymentmethodId}" required="true" requiredMessage="#{bundle.CreateCfgPaymentmethodRequiredMessage_pkCfgPaymentmethodId}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgPaymentmethodLabel_paymentmethodName}" for="paymentmethodName" />
+                        <p:inputText id="paymentmethodName" value="#{cfgPaymentmethodController.selected.paymentmethodName}" title="#{bundle.CreateCfgPaymentmethodTitle_paymentmethodName}" required="true" requiredMessage="#{bundle.CreateCfgPaymentmethodRequiredMessage_paymentmethodName}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgPaymentmethodLabel_paymentmethodDescription}" for="paymentmethodDescription" />
+                        <p:inputText id="paymentmethodDescription" value="#{cfgPaymentmethodController.selected.paymentmethodDescription}" title="#{bundle.CreateCfgPaymentmethodTitle_paymentmethodDescription}" required="true" requiredMessage="#{bundle.CreateCfgPaymentmethodRequiredMessage_paymentmethodDescription}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgPaymentmethodController.create}" value="#{bundle.Save}" update="display,:CfgPaymentmethodListForm:datalist,:growl" oncomplete="handleSubmit(args,'CfgPaymentmethodCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgPaymentmethodCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

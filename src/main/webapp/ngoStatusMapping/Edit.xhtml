@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NgoStatusMappingEditDlg" widgetVar="NgoStatusMappingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditNgoStatusMappingTitle}">
+            <h:form id="NgoStatusMappingEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ngoStatusMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditNgoStatusMappingLabel_pkNgoStatusMappingId}" for="pkNgoStatusMappingId" />
+                        <p:inputText id="pkNgoStatusMappingId" value="#{ngoStatusMappingController.selected.pkNgoStatusMappingId}" title="#{bundle.EditNgoStatusMappingTitle_pkNgoStatusMappingId}" required="true" requiredMessage="#{bundle.EditNgoStatusMappingRequiredMessage_pkNgoStatusMappingId}"/>
+                        <p:outputLabel value="#{bundle.EditNgoStatusMappingLabel_statusId}" for="statusId" />
+                        <p:inputText id="statusId" value="#{ngoStatusMappingController.selected.statusId}" title="#{bundle.EditNgoStatusMappingTitle_statusId}" required="true" requiredMessage="#{bundle.EditNgoStatusMappingRequiredMessage_statusId}"/>
+                        <p:outputLabel value="#{bundle.EditNgoStatusMappingLabel_statusNotes}" for="statusNotes" />
+                        <p:inputText id="statusNotes" value="#{ngoStatusMappingController.selected.statusNotes}" title="#{bundle.EditNgoStatusMappingTitle_statusNotes}" required="true" requiredMessage="#{bundle.EditNgoStatusMappingRequiredMessage_statusNotes}"/>
+                        <p:outputLabel value="#{bundle.EditNgoStatusMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{ngoStatusMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditNgoStatusMappingRequiredMessage_fkProjectId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ngoStatusMappingController.update}" value="#{bundle.Save}" update="display,:NgoStatusMappingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'NgoStatusMappingEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NgoStatusMappingEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

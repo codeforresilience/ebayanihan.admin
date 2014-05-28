@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NgoCreateDlg" widgetVar="NgoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNgoTitle}">
+            <h:form id="NgoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ngoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_pkNgoId}" for="pkNgoId" />
+                        <p:inputText id="pkNgoId" value="#{ngoController.selected.pkNgoId}" title="#{bundle.CreateNgoTitle_pkNgoId}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_pkNgoId}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_ngoName}" for="ngoName" />
+                        <p:inputText id="ngoName" value="#{ngoController.selected.ngoName}" title="#{bundle.CreateNgoTitle_ngoName}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_ngoName}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_ngoPurpose}" for="ngoPurpose" />
+                        <p:inputText id="ngoPurpose" value="#{ngoController.selected.ngoPurpose}" title="#{bundle.CreateNgoTitle_ngoPurpose}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_ngoPurpose}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_ngoSecId}" for="ngoSecId" />
+                        <p:inputText id="ngoSecId" value="#{ngoController.selected.ngoSecId}" title="#{bundle.CreateNgoTitle_ngoSecId}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_ngoSecId}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_ngoCmsLink}" for="ngoCmsLink" />
+                        <p:inputText id="ngoCmsLink" value="#{ngoController.selected.ngoCmsLink}" title="#{bundle.CreateNgoTitle_ngoCmsLink}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_ngoCmsLink}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_ngoStatus}" for="ngoStatus" />
+                        <p:inputText id="ngoStatus" value="#{ngoController.selected.ngoStatus}" title="#{bundle.CreateNgoTitle_ngoStatus}" required="true" requiredMessage="#{bundle.CreateNgoRequiredMessage_ngoStatus}"/>
+                        <p:outputLabel value="#{bundle.CreateNgoLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{ngoController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditNgoRequiredMessage_fkAppuserId}">
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ngoController.create}" value="#{bundle.Save}" update="display,:NgoListForm:datalist,:growl" oncomplete="handleSubmit(args,'NgoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NgoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

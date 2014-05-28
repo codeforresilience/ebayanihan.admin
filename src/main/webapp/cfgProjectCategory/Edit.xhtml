@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgProjectCategoryEditDlg" widgetVar="CfgProjectCategoryEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCfgProjectCategoryTitle}">
+            <h:form id="CfgProjectCategoryEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgProjectCategoryController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCfgProjectCategoryLabel_pkProjectCategoryId}" for="pkProjectCategoryId" />
+                        <p:inputText id="pkProjectCategoryId" value="#{cfgProjectCategoryController.selected.pkProjectCategoryId}" title="#{bundle.EditCfgProjectCategoryTitle_pkProjectCategoryId}" required="true" requiredMessage="#{bundle.EditCfgProjectCategoryRequiredMessage_pkProjectCategoryId}"/>
+                        <p:outputLabel value="#{bundle.EditCfgProjectCategoryLabel_projectCategoryName}" for="projectCategoryName" />
+                        <p:inputText id="projectCategoryName" value="#{cfgProjectCategoryController.selected.projectCategoryName}" title="#{bundle.EditCfgProjectCategoryTitle_projectCategoryName}" required="true" requiredMessage="#{bundle.EditCfgProjectCategoryRequiredMessage_projectCategoryName}"/>
+                        <p:outputLabel value="#{bundle.EditCfgProjectCategoryLabel_projectCategoryDescription}" for="projectCategoryDescription" />
+                        <p:inputText id="projectCategoryDescription" value="#{cfgProjectCategoryController.selected.projectCategoryDescription}" title="#{bundle.EditCfgProjectCategoryTitle_projectCategoryDescription}" required="true" requiredMessage="#{bundle.EditCfgProjectCategoryRequiredMessage_projectCategoryDescription}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgProjectCategoryController.update}" value="#{bundle.Save}" update="display,:CfgProjectCategoryListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CfgProjectCategoryEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgProjectCategoryEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

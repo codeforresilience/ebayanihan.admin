@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectExpenseMappingViewDlg" widgetVar="ProjectExpenseMappingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProjectExpenseMappingTitle}">
+            <h:form id="ProjectExpenseMappingViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectExpenseMappingController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProjectExpenseMappingLabel_pkProjectExpenseMappingId}"/>
+                        <h:outputText value="#{projectExpenseMappingController.selected.pkProjectExpenseMappingId}" title="#{bundle.ViewProjectExpenseMappingTitle_pkProjectExpenseMappingId}"/>
+                        <h:outputText value="#{bundle.ViewProjectExpenseMappingLabel_itemName}"/>
+                        <h:outputText value="#{projectExpenseMappingController.selected.itemName}" title="#{bundle.ViewProjectExpenseMappingTitle_itemName}"/>
+                        <h:outputText value="#{bundle.ViewProjectExpenseMappingLabel_actualCost}"/>
+                        <h:outputText value="#{projectExpenseMappingController.selected.actualCost}" title="#{bundle.ViewProjectExpenseMappingTitle_actualCost}"/>
+                        <h:outputText value="#{bundle.ViewProjectExpenseMappingLabel_fkProjectId}"/>
+                        <h:outputText value="#{projectExpenseMappingController.selected.fkProjectId}" title="#{bundle.ViewProjectExpenseMappingTitle_fkProjectId}"/>
+                        <h:outputText value="#{bundle.ViewProjectExpenseMappingLabel_fkCfgExpenseId}"/>
+                        <h:outputText value="#{projectExpenseMappingController.selected.fkCfgExpenseId}" title="#{bundle.ViewProjectExpenseMappingTitle_fkCfgExpenseId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProjectExpenseMappingViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

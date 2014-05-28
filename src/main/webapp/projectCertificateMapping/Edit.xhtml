@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectCertificateMappingEditDlg" widgetVar="ProjectCertificateMappingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProjectCertificateMappingTitle}">
+            <h:form id="ProjectCertificateMappingEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectCertificateMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_pkProjectCertificateMappingId}" for="pkProjectCertificateMappingId" />
+                        <p:inputText id="pkProjectCertificateMappingId" value="#{projectCertificateMappingController.selected.pkProjectCertificateMappingId}" title="#{bundle.EditProjectCertificateMappingTitle_pkProjectCertificateMappingId}" required="true" requiredMessage="#{bundle.EditProjectCertificateMappingRequiredMessage_pkProjectCertificateMappingId}"/>
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_bayaniPoints}" for="bayaniPoints" />
+                        <p:inputText id="bayaniPoints" value="#{projectCertificateMappingController.selected.bayaniPoints}" title="#{bundle.EditProjectCertificateMappingTitle_bayaniPoints}" required="true" requiredMessage="#{bundle.EditProjectCertificateMappingRequiredMessage_bayaniPoints}"/>
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_certificateRemarks}" for="certificateRemarks" />
+                        <p:inputText id="certificateRemarks" value="#{projectCertificateMappingController.selected.certificateRemarks}" title="#{bundle.EditProjectCertificateMappingTitle_certificateRemarks}" />
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectCertificateMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectCertificateMappingRequiredMessage_fkProjectId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_fkCertificateId}" for="fkCertificateId" />
+                        <p:selectOneMenu id="fkCertificateId" value="#{projectCertificateMappingController.selected.fkCertificateId}" required="true" requiredMessage="#{bundle.EditProjectCertificateMappingRequiredMessage_fkCertificateId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cfgCertificateController.itemsAvailableSelectOne}"
+                                           var="fkCertificateIdItem"
+                                           itemValue="#{fkCertificateIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProjectCertificateMappingLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{projectCertificateMappingController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditProjectCertificateMappingRequiredMessage_fkAppuserId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectCertificateMappingController.update}" value="#{bundle.Save}" update="display,:ProjectCertificateMappingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProjectCertificateMappingEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectCertificateMappingEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

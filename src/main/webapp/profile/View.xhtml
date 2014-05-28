@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProfileViewDlg" widgetVar="ProfileViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProfileTitle}">
+            <h:form id="ProfileViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{profileController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProfileLabel_pkProfileId}"/>
+                        <h:outputText value="#{profileController.selected.pkProfileId}" title="#{bundle.ViewProfileTitle_pkProfileId}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_mobileNumber}"/>
+                        <h:outputText value="#{profileController.selected.mobileNumber}" title="#{bundle.ViewProfileTitle_mobileNumber}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_businessEmail}"/>
+                        <h:outputText value="#{profileController.selected.businessEmail}" title="#{bundle.ViewProfileTitle_businessEmail}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_landline}"/>
+                        <h:outputText value="#{profileController.selected.landline}" title="#{bundle.ViewProfileTitle_landline}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressZipCode}"/>
+                        <h:outputText value="#{profileController.selected.addressZipCode}" title="#{bundle.ViewProfileTitle_addressZipCode}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressStreetSubdivision}"/>
+                        <h:outputText value="#{profileController.selected.addressStreetSubdivision}" title="#{bundle.ViewProfileTitle_addressStreetSubdivision}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressRoomFloorUnit}"/>
+                        <h:outputText value="#{profileController.selected.addressRoomFloorUnit}" title="#{bundle.ViewProfileTitle_addressRoomFloorUnit}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_googleMap}"/>
+                        <h:outputText value="#{profileController.selected.googleMap}" title="#{bundle.ViewProfileTitle_googleMap}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_identificationNoType}"/>
+                        <h:outputText value="#{profileController.selected.identificationNoType}" title="#{bundle.ViewProfileTitle_identificationNoType}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_identificationNo}"/>
+                        <h:outputText value="#{profileController.selected.identificationNo}" title="#{bundle.ViewProfileTitle_identificationNo}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_emergencyPersonName}"/>
+                        <h:outputText value="#{profileController.selected.emergencyPersonName}" title="#{bundle.ViewProfileTitle_emergencyPersonName}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_emergencyContactNo}"/>
+                        <h:outputText value="#{profileController.selected.emergencyContactNo}" title="#{bundle.ViewProfileTitle_emergencyContactNo}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_privacyLevel}"/>
+                        <h:outputText value="#{profileController.selected.privacyLevel}" title="#{bundle.ViewProfileTitle_privacyLevel}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_siteLink}"/>
+                        <h:outputText value="#{profileController.selected.siteLink}" title="#{bundle.ViewProfileTitle_siteLink}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_regularJob}"/>
+                        <h:outputText value="#{profileController.selected.regularJob}" title="#{bundle.ViewProfileTitle_regularJob}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_remarks}"/>
+                        <h:outputText value="#{profileController.selected.remarks}" title="#{bundle.ViewProfileTitle_remarks}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressFkCfgStateprovinceId}"/>
+                        <h:outputText value="#{profileController.selected.addressFkCfgStateprovinceId}" title="#{bundle.ViewProfileTitle_addressFkCfgStateprovinceId}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressFkCfgCountryId}"/>
+                        <h:outputText value="#{profileController.selected.addressFkCfgCountryId}" title="#{bundle.ViewProfileTitle_addressFkCfgCountryId}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressFkCfgCitytownId}"/>
+                        <h:outputText value="#{profileController.selected.addressFkCfgCitytownId}" title="#{bundle.ViewProfileTitle_addressFkCfgCitytownId}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_addressFkCfgBarangayId}"/>
+                        <h:outputText value="#{profileController.selected.addressFkCfgBarangayId}" title="#{bundle.ViewProfileTitle_addressFkCfgBarangayId}"/>
+                        <h:outputText value="#{bundle.ViewProfileLabel_fkAppuserId}"/>
+                        <h:outputText value="#{profileController.selected.fkAppuserId}" title="#{bundle.ViewProfileTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProfileViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

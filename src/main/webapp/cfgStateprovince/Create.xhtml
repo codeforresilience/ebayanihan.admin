@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgStateprovinceCreateDlg" widgetVar="CfgStateprovinceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCfgStateprovinceTitle}">
+            <h:form id="CfgStateprovinceCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgStateprovinceController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCfgStateprovinceLabel_pkCfgStateprovinceId}" for="pkCfgStateprovinceId" />
+                        <p:inputText id="pkCfgStateprovinceId" value="#{cfgStateprovinceController.selected.pkCfgStateprovinceId}" title="#{bundle.CreateCfgStateprovinceTitle_pkCfgStateprovinceId}" required="true" requiredMessage="#{bundle.CreateCfgStateprovinceRequiredMessage_pkCfgStateprovinceId}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgStateprovinceLabel_stateprovinceName}" for="stateprovinceName" />
+                        <p:inputText id="stateprovinceName" value="#{cfgStateprovinceController.selected.stateprovinceName}" title="#{bundle.CreateCfgStateprovinceTitle_stateprovinceName}" required="true" requiredMessage="#{bundle.CreateCfgStateprovinceRequiredMessage_stateprovinceName}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgStateprovinceLabel_fkCfgCountryId}" for="fkCfgCountryId" />
+                        <p:selectOneMenu id="fkCfgCountryId" value="#{cfgStateprovinceController.selected.fkCfgCountryId}" required="true" requiredMessage="#{bundle.EditCfgStateprovinceRequiredMessage_fkCfgCountryId}">
+                            <f:selectItems value="#{cfgCountryController.itemsAvailableSelectOne}"
+                                           var="fkCfgCountryIdItem"
+                                           itemValue="#{fkCfgCountryIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgStateprovinceController.create}" value="#{bundle.Save}" update="display,:CfgStateprovinceListForm:datalist,:growl" oncomplete="handleSubmit(args,'CfgStateprovinceCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgStateprovinceCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

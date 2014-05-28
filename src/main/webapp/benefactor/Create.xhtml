@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BenefactorCreateDlg" widgetVar="BenefactorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBenefactorTitle}">
+            <h:form id="BenefactorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{benefactorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_pkBenefactorId}" for="pkBenefactorId" />
+                        <p:inputText id="pkBenefactorId" value="#{benefactorController.selected.pkBenefactorId}" title="#{bundle.CreateBenefactorTitle_pkBenefactorId}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_pkBenefactorId}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_benefactorName}" for="benefactorName" />
+                        <p:inputText id="benefactorName" value="#{benefactorController.selected.benefactorName}" title="#{bundle.CreateBenefactorTitle_benefactorName}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_benefactorName}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_fromAmount}" for="fromAmount" />
+                        <p:inputText id="fromAmount" value="#{benefactorController.selected.fromAmount}" title="#{bundle.CreateBenefactorTitle_fromAmount}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_fromAmount}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_fromCurrency}" for="fromCurrency" />
+                        <p:inputText id="fromCurrency" value="#{benefactorController.selected.fromCurrency}" title="#{bundle.CreateBenefactorTitle_fromCurrency}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_fromCurrency}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_forexRate}" for="forexRate" />
+                        <p:inputText id="forexRate" value="#{benefactorController.selected.forexRate}" title="#{bundle.CreateBenefactorTitle_forexRate}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_forexRate}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_toAmount}" for="toAmount" />
+                        <p:inputText id="toAmount" value="#{benefactorController.selected.toAmount}" title="#{bundle.CreateBenefactorTitle_toAmount}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_toAmount}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_toCurrency}" for="toCurrency" />
+                        <p:inputText id="toCurrency" value="#{benefactorController.selected.toCurrency}" title="#{bundle.CreateBenefactorTitle_toCurrency}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_toCurrency}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{benefactorController.selected.status}" title="#{bundle.CreateBenefactorTitle_status}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_status}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_remainingBalance}" for="remainingBalance" />
+                        <p:inputText id="remainingBalance" value="#{benefactorController.selected.remainingBalance}" title="#{bundle.CreateBenefactorTitle_remainingBalance}" required="true" requiredMessage="#{bundle.CreateBenefactorRequiredMessage_remainingBalance}"/>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_transactionNumber}" for="transactionNumber" />
+                        <p:inputText id="transactionNumber" value="#{benefactorController.selected.transactionNumber}" title="#{bundle.CreateBenefactorTitle_transactionNumber}" />
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_contactNumber}" for="contactNumber" />
+                        <p:inputText id="contactNumber" value="#{benefactorController.selected.contactNumber}" title="#{bundle.CreateBenefactorTitle_contactNumber}" />
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_contactEmail}" for="contactEmail" />
+                        <p:inputText id="contactEmail" value="#{benefactorController.selected.contactEmail}" title="#{bundle.CreateBenefactorTitle_contactEmail}" />
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_verified}" for="verified" />
+                        <p:inputText id="verified" value="#{benefactorController.selected.verified}" title="#{bundle.CreateBenefactorTitle_verified}" />
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{benefactorController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditBenefactorRequiredMessage_fkProjectId}">
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_fkCfgPaymentmethodId}" for="fkCfgPaymentmethodId" />
+                        <p:selectOneMenu id="fkCfgPaymentmethodId" value="#{benefactorController.selected.fkCfgPaymentmethodId}" required="true" requiredMessage="#{bundle.EditBenefactorRequiredMessage_fkCfgPaymentmethodId}">
+                            <f:selectItems value="#{cfgPaymentmethodController.itemsAvailableSelectOne}"
+                                           var="fkCfgPaymentmethodIdItem"
+                                           itemValue="#{fkCfgPaymentmethodIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBenefactorLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{benefactorController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditBenefactorRequiredMessage_fkAppuserId}">
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{benefactorController.create}" value="#{bundle.Save}" update="display,:BenefactorListForm:datalist,:growl" oncomplete="handleSubmit(args,'BenefactorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BenefactorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

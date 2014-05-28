@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConstantEditDlg" widgetVar="ConstantEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConstantTitle}">
+            <h:form id="ConstantEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{constantController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConstantLabel_pkConstantId}" for="pkConstantId" />
+                        <p:inputText id="pkConstantId" value="#{constantController.selected.pkConstantId}" title="#{bundle.EditConstantTitle_pkConstantId}" required="true" requiredMessage="#{bundle.EditConstantRequiredMessage_pkConstantId}"/>
+                        <p:outputLabel value="#{bundle.EditConstantLabel_constantName}" for="constantName" />
+                        <p:inputText id="constantName" value="#{constantController.selected.constantName}" title="#{bundle.EditConstantTitle_constantName}" />
+                        <p:outputLabel value="#{bundle.EditConstantLabel_constantValue}" for="constantValue" />
+                        <p:inputText id="constantValue" value="#{constantController.selected.constantValue}" title="#{bundle.EditConstantTitle_constantValue}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{constantController.update}" value="#{bundle.Save}" update="display,:ConstantListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConstantEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConstantEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectExpenseMappingCreateDlg" widgetVar="ProjectExpenseMappingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjectExpenseMappingTitle}">
+            <h:form id="ProjectExpenseMappingCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectExpenseMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjectExpenseMappingLabel_pkProjectExpenseMappingId}" for="pkProjectExpenseMappingId" />
+                        <p:inputText id="pkProjectExpenseMappingId" value="#{projectExpenseMappingController.selected.pkProjectExpenseMappingId}" title="#{bundle.CreateProjectExpenseMappingTitle_pkProjectExpenseMappingId}" required="true" requiredMessage="#{bundle.CreateProjectExpenseMappingRequiredMessage_pkProjectExpenseMappingId}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectExpenseMappingLabel_itemName}" for="itemName" />
+                        <p:inputText id="itemName" value="#{projectExpenseMappingController.selected.itemName}" title="#{bundle.CreateProjectExpenseMappingTitle_itemName}" required="true" requiredMessage="#{bundle.CreateProjectExpenseMappingRequiredMessage_itemName}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectExpenseMappingLabel_actualCost}" for="actualCost" />
+                        <p:inputText id="actualCost" value="#{projectExpenseMappingController.selected.actualCost}" title="#{bundle.CreateProjectExpenseMappingTitle_actualCost}" required="true" requiredMessage="#{bundle.CreateProjectExpenseMappingRequiredMessage_actualCost}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectExpenseMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectExpenseMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectExpenseMappingRequiredMessage_fkProjectId}">
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjectExpenseMappingLabel_fkCfgExpenseId}" for="fkCfgExpenseId" />
+                        <p:selectOneMenu id="fkCfgExpenseId" value="#{projectExpenseMappingController.selected.fkCfgExpenseId}" required="true" requiredMessage="#{bundle.EditProjectExpenseMappingRequiredMessage_fkCfgExpenseId}">
+                            <f:selectItems value="#{cfgExpenseController.itemsAvailableSelectOne}"
+                                           var="fkCfgExpenseIdItem"
+                                           itemValue="#{fkCfgExpenseIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectExpenseMappingController.create}" value="#{bundle.Save}" update="display,:ProjectExpenseMappingListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjectExpenseMappingCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectExpenseMappingCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

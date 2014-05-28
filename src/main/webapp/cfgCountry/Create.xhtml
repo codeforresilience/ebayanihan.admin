@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgCountryCreateDlg" widgetVar="CfgCountryCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCfgCountryTitle}">
+            <h:form id="CfgCountryCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgCountryController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCfgCountryLabel_pkCfgCountryId}" for="pkCfgCountryId" />
+                        <p:inputText id="pkCfgCountryId" value="#{cfgCountryController.selected.pkCfgCountryId}" title="#{bundle.CreateCfgCountryTitle_pkCfgCountryId}" required="true" requiredMessage="#{bundle.CreateCfgCountryRequiredMessage_pkCfgCountryId}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgCountryLabel_countryName}" for="countryName" />
+                        <p:inputText id="countryName" value="#{cfgCountryController.selected.countryName}" title="#{bundle.CreateCfgCountryTitle_countryName}" required="true" requiredMessage="#{bundle.CreateCfgCountryRequiredMessage_countryName}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgCountryController.create}" value="#{bundle.Save}" update="display,:CfgCountryListForm:datalist,:growl" oncomplete="handleSubmit(args,'CfgCountryCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgCountryCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

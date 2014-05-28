@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdvocacyEditDlg" widgetVar="AdvocacyEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAdvocacyTitle}">
+            <h:form id="AdvocacyEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{advocacyController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAdvocacyLabel_pkAdvocateId}" for="pkAdvocateId" />
+                        <p:inputText id="pkAdvocateId" value="#{advocacyController.selected.pkAdvocateId}" title="#{bundle.EditAdvocacyTitle_pkAdvocateId}" required="true" requiredMessage="#{bundle.EditAdvocacyRequiredMessage_pkAdvocateId}"/>
+                        <p:outputLabel value="#{bundle.EditAdvocacyLabel_advocateTitle}" for="advocateTitle" />
+                        <p:inputText id="advocateTitle" value="#{advocacyController.selected.advocateTitle}" title="#{bundle.EditAdvocacyTitle_advocateTitle}" required="true" requiredMessage="#{bundle.EditAdvocacyRequiredMessage_advocateTitle}"/>
+                        <p:outputLabel value="#{bundle.EditAdvocacyLabel_advocateDescription}" for="advocateDescription" />
+                        <p:inputText id="advocateDescription" value="#{advocacyController.selected.advocateDescription}" title="#{bundle.EditAdvocacyTitle_advocateDescription}" required="true" requiredMessage="#{bundle.EditAdvocacyRequiredMessage_advocateDescription}"/>
+                        <p:outputLabel value="#{bundle.EditAdvocacyLabel_advocateCmslink}" for="advocateCmslink" />
+                        <p:inputText id="advocateCmslink" value="#{advocacyController.selected.advocateCmslink}" title="#{bundle.EditAdvocacyTitle_advocateCmslink}" required="true" requiredMessage="#{bundle.EditAdvocacyRequiredMessage_advocateCmslink}"/>
+                        <p:outputLabel value="#{bundle.EditAdvocacyLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{advocacyController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditAdvocacyRequiredMessage_fkAppuserId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{advocacyController.update}" value="#{bundle.Save}" update="display,:AdvocacyListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AdvocacyEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AdvocacyEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

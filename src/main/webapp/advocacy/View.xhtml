@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdvocacyViewDlg" widgetVar="AdvocacyViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAdvocacyTitle}">
+            <h:form id="AdvocacyViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{advocacyController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAdvocacyLabel_pkAdvocateId}"/>
+                        <h:outputText value="#{advocacyController.selected.pkAdvocateId}" title="#{bundle.ViewAdvocacyTitle_pkAdvocateId}"/>
+                        <h:outputText value="#{bundle.ViewAdvocacyLabel_advocateTitle}"/>
+                        <h:outputText value="#{advocacyController.selected.advocateTitle}" title="#{bundle.ViewAdvocacyTitle_advocateTitle}"/>
+                        <h:outputText value="#{bundle.ViewAdvocacyLabel_advocateDescription}"/>
+                        <h:outputText value="#{advocacyController.selected.advocateDescription}" title="#{bundle.ViewAdvocacyTitle_advocateDescription}"/>
+                        <h:outputText value="#{bundle.ViewAdvocacyLabel_advocateCmslink}"/>
+                        <h:outputText value="#{advocacyController.selected.advocateCmslink}" title="#{bundle.ViewAdvocacyTitle_advocateCmslink}"/>
+                        <h:outputText value="#{bundle.ViewAdvocacyLabel_fkAppuserId}"/>
+                        <h:outputText value="#{advocacyController.selected.fkAppuserId}" title="#{bundle.ViewAdvocacyTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AdvocacyViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

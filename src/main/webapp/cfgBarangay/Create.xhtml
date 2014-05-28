@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgBarangayCreateDlg" widgetVar="CfgBarangayCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCfgBarangayTitle}">
+            <h:form id="CfgBarangayCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgBarangayController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCfgBarangayLabel_pkCfgBarangayId}" for="pkCfgBarangayId" />
+                        <p:inputText id="pkCfgBarangayId" value="#{cfgBarangayController.selected.pkCfgBarangayId}" title="#{bundle.CreateCfgBarangayTitle_pkCfgBarangayId}" required="true" requiredMessage="#{bundle.CreateCfgBarangayRequiredMessage_pkCfgBarangayId}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgBarangayLabel_barangayName}" for="barangayName" />
+                        <p:inputText id="barangayName" value="#{cfgBarangayController.selected.barangayName}" title="#{bundle.CreateCfgBarangayTitle_barangayName}" required="true" requiredMessage="#{bundle.CreateCfgBarangayRequiredMessage_barangayName}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgBarangayLabel_fkCfgCitytownId}" for="fkCfgCitytownId" />
+                        <p:selectOneMenu id="fkCfgCitytownId" value="#{cfgBarangayController.selected.fkCfgCitytownId}" required="true" requiredMessage="#{bundle.EditCfgBarangayRequiredMessage_fkCfgCitytownId}">
+                            <f:selectItems value="#{cfgCitytownController.itemsAvailableSelectOne}"
+                                           var="fkCfgCitytownIdItem"
+                                           itemValue="#{fkCfgCitytownIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgBarangayController.create}" value="#{bundle.Save}" update="display,:CfgBarangayListForm:datalist,:growl" oncomplete="handleSubmit(args,'CfgBarangayCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgBarangayCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

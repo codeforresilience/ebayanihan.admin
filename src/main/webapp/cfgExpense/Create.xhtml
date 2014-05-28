@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgExpenseCreateDlg" widgetVar="CfgExpenseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCfgExpenseTitle}">
+            <h:form id="CfgExpenseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgExpenseController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCfgExpenseLabel_pkCfgExpenseId}" for="pkCfgExpenseId" />
+                        <p:inputText id="pkCfgExpenseId" value="#{cfgExpenseController.selected.pkCfgExpenseId}" title="#{bundle.CreateCfgExpenseTitle_pkCfgExpenseId}" required="true" requiredMessage="#{bundle.CreateCfgExpenseRequiredMessage_pkCfgExpenseId}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgExpenseLabel_expenseName}" for="expenseName" />
+                        <p:inputText id="expenseName" value="#{cfgExpenseController.selected.expenseName}" title="#{bundle.CreateCfgExpenseTitle_expenseName}" required="true" requiredMessage="#{bundle.CreateCfgExpenseRequiredMessage_expenseName}"/>
+                        <p:outputLabel value="#{bundle.CreateCfgExpenseLabel_expenseDescription}" for="expenseDescription" />
+                        <p:inputText id="expenseDescription" value="#{cfgExpenseController.selected.expenseDescription}" title="#{bundle.CreateCfgExpenseTitle_expenseDescription}" required="true" requiredMessage="#{bundle.CreateCfgExpenseRequiredMessage_expenseDescription}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cfgExpenseController.create}" value="#{bundle.Save}" update="display,:CfgExpenseListForm:datalist,:growl" oncomplete="handleSubmit(args,'CfgExpenseCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CfgExpenseCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

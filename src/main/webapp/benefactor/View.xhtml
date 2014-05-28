@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BenefactorViewDlg" widgetVar="BenefactorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBenefactorTitle}">
+            <h:form id="BenefactorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{benefactorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_pkBenefactorId}"/>
+                        <h:outputText value="#{benefactorController.selected.pkBenefactorId}" title="#{bundle.ViewBenefactorTitle_pkBenefactorId}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_benefactorName}"/>
+                        <h:outputText value="#{benefactorController.selected.benefactorName}" title="#{bundle.ViewBenefactorTitle_benefactorName}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_fromAmount}"/>
+                        <h:outputText value="#{benefactorController.selected.fromAmount}" title="#{bundle.ViewBenefactorTitle_fromAmount}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_fromCurrency}"/>
+                        <h:outputText value="#{benefactorController.selected.fromCurrency}" title="#{bundle.ViewBenefactorTitle_fromCurrency}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_forexRate}"/>
+                        <h:outputText value="#{benefactorController.selected.forexRate}" title="#{bundle.ViewBenefactorTitle_forexRate}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_toAmount}"/>
+                        <h:outputText value="#{benefactorController.selected.toAmount}" title="#{bundle.ViewBenefactorTitle_toAmount}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_toCurrency}"/>
+                        <h:outputText value="#{benefactorController.selected.toCurrency}" title="#{bundle.ViewBenefactorTitle_toCurrency}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_status}"/>
+                        <h:outputText value="#{benefactorController.selected.status}" title="#{bundle.ViewBenefactorTitle_status}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_remainingBalance}"/>
+                        <h:outputText value="#{benefactorController.selected.remainingBalance}" title="#{bundle.ViewBenefactorTitle_remainingBalance}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_transactionNumber}"/>
+                        <h:outputText value="#{benefactorController.selected.transactionNumber}" title="#{bundle.ViewBenefactorTitle_transactionNumber}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_contactNumber}"/>
+                        <h:outputText value="#{benefactorController.selected.contactNumber}" title="#{bundle.ViewBenefactorTitle_contactNumber}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_contactEmail}"/>
+                        <h:outputText value="#{benefactorController.selected.contactEmail}" title="#{bundle.ViewBenefactorTitle_contactEmail}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_verified}"/>
+                        <h:outputText value="#{benefactorController.selected.verified}" title="#{bundle.ViewBenefactorTitle_verified}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_fkProjectId}"/>
+                        <h:outputText value="#{benefactorController.selected.fkProjectId}" title="#{bundle.ViewBenefactorTitle_fkProjectId}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_fkCfgPaymentmethodId}"/>
+                        <h:outputText value="#{benefactorController.selected.fkCfgPaymentmethodId}" title="#{bundle.ViewBenefactorTitle_fkCfgPaymentmethodId}"/>
+                        <h:outputText value="#{bundle.ViewBenefactorLabel_fkAppuserId}"/>
+                        <h:outputText value="#{benefactorController.selected.fkAppuserId}" title="#{bundle.ViewBenefactorTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BenefactorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

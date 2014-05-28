@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgCitytownViewDlg" widgetVar="CfgCitytownViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCfgCitytownTitle}">
+            <h:form id="CfgCitytownViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgCitytownController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCfgCitytownLabel_pkCfgCitytownId}"/>
+                        <h:outputText value="#{cfgCitytownController.selected.pkCfgCitytownId}" title="#{bundle.ViewCfgCitytownTitle_pkCfgCitytownId}"/>
+                        <h:outputText value="#{bundle.ViewCfgCitytownLabel_citytownName}"/>
+                        <h:outputText value="#{cfgCitytownController.selected.citytownName}" title="#{bundle.ViewCfgCitytownTitle_citytownName}"/>
+                        <h:outputText value="#{bundle.ViewCfgCitytownLabel_fkCfgStateprovinceId}"/>
+                        <h:outputText value="#{cfgCitytownController.selected.fkCfgStateprovinceId}" title="#{bundle.ViewCfgCitytownTitle_fkCfgStateprovinceId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CfgCitytownViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

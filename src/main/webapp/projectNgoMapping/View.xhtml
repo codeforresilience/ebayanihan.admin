@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectNgoMappingViewDlg" widgetVar="ProjectNgoMappingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProjectNgoMappingTitle}">
+            <h:form id="ProjectNgoMappingViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectNgoMappingController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProjectNgoMappingLabel_pkProjectNgoMappingId}"/>
+                        <h:outputText value="#{projectNgoMappingController.selected.pkProjectNgoMappingId}" title="#{bundle.ViewProjectNgoMappingTitle_pkProjectNgoMappingId}"/>
+                        <h:outputText value="#{bundle.ViewProjectNgoMappingLabel_ngoPurpose}"/>
+                        <h:outputText value="#{projectNgoMappingController.selected.ngoPurpose}" title="#{bundle.ViewProjectNgoMappingTitle_ngoPurpose}"/>
+                        <h:outputText value="#{bundle.ViewProjectNgoMappingLabel_fkProjectId}"/>
+                        <h:outputText value="#{projectNgoMappingController.selected.fkProjectId}" title="#{bundle.ViewProjectNgoMappingTitle_fkProjectId}"/>
+                        <h:outputText value="#{bundle.ViewProjectNgoMappingLabel_fkNgoId}"/>
+                        <h:outputText value="#{projectNgoMappingController.selected.fkNgoId}" title="#{bundle.ViewProjectNgoMappingTitle_fkNgoId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProjectNgoMappingViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

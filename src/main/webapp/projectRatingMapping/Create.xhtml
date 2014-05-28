@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectRatingMappingCreateDlg" widgetVar="ProjectRatingMappingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjectRatingMappingTitle}">
+            <h:form id="ProjectRatingMappingCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectRatingMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjectRatingMappingLabel_pkProjectRatingId}" for="pkProjectRatingId" />
+                        <p:inputText id="pkProjectRatingId" value="#{projectRatingMappingController.selected.pkProjectRatingId}" title="#{bundle.CreateProjectRatingMappingTitle_pkProjectRatingId}" required="true" requiredMessage="#{bundle.CreateProjectRatingMappingRequiredMessage_pkProjectRatingId}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectRatingMappingLabel_rating}" for="rating" />
+                        <p:inputText id="rating" value="#{projectRatingMappingController.selected.rating}" title="#{bundle.CreateProjectRatingMappingTitle_rating}" required="true" requiredMessage="#{bundle.CreateProjectRatingMappingRequiredMessage_rating}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectRatingMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectRatingMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectRatingMappingRequiredMessage_fkProjectId}">
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjectRatingMappingLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{projectRatingMappingController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditProjectRatingMappingRequiredMessage_fkAppuserId}">
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectRatingMappingController.create}" value="#{bundle.Save}" update="display,:ProjectRatingMappingListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjectRatingMappingCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectRatingMappingCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

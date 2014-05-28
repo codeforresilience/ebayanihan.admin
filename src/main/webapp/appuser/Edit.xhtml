@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AppuserEditDlg" widgetVar="AppuserEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAppuserTitle}">
+            <h:form id="AppuserEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{appuserController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_pkAppuserId}" for="pkAppuserId" />
+                        <p:inputText id="pkAppuserId" value="#{appuserController.selected.pkAppuserId}" title="#{bundle.EditAppuserTitle_pkAppuserId}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_pkAppuserId}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_accountName}" for="accountName" />
+                        <p:inputText id="accountName" value="#{appuserController.selected.accountName}" title="#{bundle.EditAppuserTitle_accountName}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_accountName}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_firstName}" for="firstName" />
+                        <p:inputText id="firstName" value="#{appuserController.selected.firstName}" title="#{bundle.EditAppuserTitle_firstName}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_firstName}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_lastName}" for="lastName" />
+                        <p:inputText id="lastName" value="#{appuserController.selected.lastName}" title="#{bundle.EditAppuserTitle_lastName}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_lastName}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_accountEmail}" for="accountEmail" />
+                        <p:inputText id="accountEmail" value="#{appuserController.selected.accountEmail}" title="#{bundle.EditAppuserTitle_accountEmail}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_accountEmail}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_birthday}" for="birthday" />
+                        <p:calendar id="birthday" pattern="MM/dd/yyyy" value="#{appuserController.selected.birthday}" title="#{bundle.EditAppuserTitle_birthday}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_birthday}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_membershipDate}" for="membershipDate" />
+                        <p:calendar id="membershipDate" pattern="MM/dd/yyyy" value="#{appuserController.selected.membershipDate}" title="#{bundle.EditAppuserTitle_membershipDate}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_membershipDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_lastLogin}" for="lastLogin" />
+                        <p:calendar id="lastLogin" pattern="MM/dd/yyyy HH:mm:ss" value="#{appuserController.selected.lastLogin}" title="#{bundle.EditAppuserTitle_lastLogin}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_lastLogin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_picture}" for="picture" />
+                        <p:inputText id="picture" value="#{appuserController.selected.picture}" title="#{bundle.EditAppuserTitle_picture}" />
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_accountStatus}" for="accountStatus" />
+                        <p:inputText id="accountStatus" value="#{appuserController.selected.accountStatus}" title="#{bundle.EditAppuserTitle_accountStatus}" required="true" requiredMessage="#{bundle.EditAppuserRequiredMessage_accountStatus}"/>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_ngo}" for="ngo" />
+                        <p:selectOneMenu id="ngo" value="#{appuserController.selected.ngo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ngoController.itemsAvailableSelectOne}"
+                                           var="ngoItem"
+                                           itemValue="#{ngoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_advocacy}" for="advocacy" />
+                        <p:selectOneMenu id="advocacy" value="#{appuserController.selected.advocacy}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{advocacyController.itemsAvailableSelectOne}"
+                                           var="advocacyItem"
+                                           itemValue="#{advocacyItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAppuserLabel_profile}" for="profile" />
+                        <p:selectOneMenu id="profile" value="#{appuserController.selected.profile}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{profileController.itemsAvailableSelectOne}"
+                                           var="profileItem"
+                                           itemValue="#{profileItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{appuserController.update}" value="#{bundle.Save}" update="display,:AppuserListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AppuserEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AppuserEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

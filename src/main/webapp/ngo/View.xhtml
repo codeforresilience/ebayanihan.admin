@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NgoViewDlg" widgetVar="NgoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNgoTitle}">
+            <h:form id="NgoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ngoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNgoLabel_pkNgoId}"/>
+                        <h:outputText value="#{ngoController.selected.pkNgoId}" title="#{bundle.ViewNgoTitle_pkNgoId}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_ngoName}"/>
+                        <h:outputText value="#{ngoController.selected.ngoName}" title="#{bundle.ViewNgoTitle_ngoName}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_ngoPurpose}"/>
+                        <h:outputText value="#{ngoController.selected.ngoPurpose}" title="#{bundle.ViewNgoTitle_ngoPurpose}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_ngoSecId}"/>
+                        <h:outputText value="#{ngoController.selected.ngoSecId}" title="#{bundle.ViewNgoTitle_ngoSecId}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_ngoCmsLink}"/>
+                        <h:outputText value="#{ngoController.selected.ngoCmsLink}" title="#{bundle.ViewNgoTitle_ngoCmsLink}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_ngoStatus}"/>
+                        <h:outputText value="#{ngoController.selected.ngoStatus}" title="#{bundle.ViewNgoTitle_ngoStatus}"/>
+                        <h:outputText value="#{bundle.ViewNgoLabel_fkAppuserId}"/>
+                        <h:outputText value="#{ngoController.selected.fkAppuserId}" title="#{bundle.ViewNgoTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NgoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectNgoMappingEditDlg" widgetVar="ProjectNgoMappingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProjectNgoMappingTitle}">
+            <h:form id="ProjectNgoMappingEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectNgoMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProjectNgoMappingLabel_pkProjectNgoMappingId}" for="pkProjectNgoMappingId" />
+                        <p:inputText id="pkProjectNgoMappingId" value="#{projectNgoMappingController.selected.pkProjectNgoMappingId}" title="#{bundle.EditProjectNgoMappingTitle_pkProjectNgoMappingId}" required="true" requiredMessage="#{bundle.EditProjectNgoMappingRequiredMessage_pkProjectNgoMappingId}"/>
+                        <p:outputLabel value="#{bundle.EditProjectNgoMappingLabel_ngoPurpose}" for="ngoPurpose" />
+                        <p:inputText id="ngoPurpose" value="#{projectNgoMappingController.selected.ngoPurpose}" title="#{bundle.EditProjectNgoMappingTitle_ngoPurpose}" required="true" requiredMessage="#{bundle.EditProjectNgoMappingRequiredMessage_ngoPurpose}"/>
+                        <p:outputLabel value="#{bundle.EditProjectNgoMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectNgoMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectNgoMappingRequiredMessage_fkProjectId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProjectNgoMappingLabel_fkNgoId}" for="fkNgoId" />
+                        <p:selectOneMenu id="fkNgoId" value="#{projectNgoMappingController.selected.fkNgoId}" required="true" requiredMessage="#{bundle.EditProjectNgoMappingRequiredMessage_fkNgoId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ngoController.itemsAvailableSelectOne}"
+                                           var="fkNgoIdItem"
+                                           itemValue="#{fkNgoIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectNgoMappingController.update}" value="#{bundle.Save}" update="display,:ProjectNgoMappingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProjectNgoMappingEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectNgoMappingEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

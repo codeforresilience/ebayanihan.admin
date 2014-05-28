@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectAccountingMappingCreateDlg" widgetVar="ProjectAccountingMappingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjectAccountingMappingTitle}">
+            <h:form id="ProjectAccountingMappingCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectAccountingMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjectAccountingMappingLabel_pkProjectAccountingMappingId}" for="pkProjectAccountingMappingId" />
+                        <p:inputText id="pkProjectAccountingMappingId" value="#{projectAccountingMappingController.selected.pkProjectAccountingMappingId}" title="#{bundle.CreateProjectAccountingMappingTitle_pkProjectAccountingMappingId}" required="true" requiredMessage="#{bundle.CreateProjectAccountingMappingRequiredMessage_pkProjectAccountingMappingId}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectAccountingMappingLabel_reviewStatus}" for="reviewStatus" />
+                        <p:inputText id="reviewStatus" value="#{projectAccountingMappingController.selected.reviewStatus}" title="#{bundle.CreateProjectAccountingMappingTitle_reviewStatus}" required="true" requiredMessage="#{bundle.CreateProjectAccountingMappingRequiredMessage_reviewStatus}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectAccountingMappingLabel_remarks}" for="remarks" />
+                        <p:inputText id="remarks" value="#{projectAccountingMappingController.selected.remarks}" title="#{bundle.CreateProjectAccountingMappingTitle_remarks}" />
+                        <p:outputLabel value="#{bundle.CreateProjectAccountingMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectAccountingMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectAccountingMappingRequiredMessage_fkProjectId}">
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjectAccountingMappingLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{projectAccountingMappingController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditProjectAccountingMappingRequiredMessage_fkAppuserId}">
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectAccountingMappingController.create}" value="#{bundle.Save}" update="display,:ProjectAccountingMappingListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjectAccountingMappingCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectAccountingMappingCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

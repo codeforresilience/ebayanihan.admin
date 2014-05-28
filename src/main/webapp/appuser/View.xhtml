@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AppuserViewDlg" widgetVar="AppuserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAppuserTitle}">
+            <h:form id="AppuserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{appuserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAppuserLabel_pkAppuserId}"/>
+                        <h:outputText value="#{appuserController.selected.pkAppuserId}" title="#{bundle.ViewAppuserTitle_pkAppuserId}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_accountName}"/>
+                        <h:outputText value="#{appuserController.selected.accountName}" title="#{bundle.ViewAppuserTitle_accountName}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_firstName}"/>
+                        <h:outputText value="#{appuserController.selected.firstName}" title="#{bundle.ViewAppuserTitle_firstName}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_lastName}"/>
+                        <h:outputText value="#{appuserController.selected.lastName}" title="#{bundle.ViewAppuserTitle_lastName}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_accountEmail}"/>
+                        <h:outputText value="#{appuserController.selected.accountEmail}" title="#{bundle.ViewAppuserTitle_accountEmail}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_birthday}"/>
+                        <h:outputText value="#{appuserController.selected.birthday}" title="#{bundle.ViewAppuserTitle_birthday}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_membershipDate}"/>
+                        <h:outputText value="#{appuserController.selected.membershipDate}" title="#{bundle.ViewAppuserTitle_membershipDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_lastLogin}"/>
+                        <h:outputText value="#{appuserController.selected.lastLogin}" title="#{bundle.ViewAppuserTitle_lastLogin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_picture}"/>
+                        <h:outputText value="#{appuserController.selected.picture}" title="#{bundle.ViewAppuserTitle_picture}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_accountStatus}"/>
+                        <h:outputText value="#{appuserController.selected.accountStatus}" title="#{bundle.ViewAppuserTitle_accountStatus}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_ngo}"/>
+                        <h:outputText value="#{appuserController.selected.ngo}" title="#{bundle.ViewAppuserTitle_ngo}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_advocacy}"/>
+                        <h:outputText value="#{appuserController.selected.advocacy}" title="#{bundle.ViewAppuserTitle_advocacy}"/>
+                        <h:outputText value="#{bundle.ViewAppuserLabel_profile}"/>
+                        <h:outputText value="#{appuserController.selected.profile}" title="#{bundle.ViewAppuserTitle_profile}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AppuserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

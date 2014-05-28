@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CfgPaymentmethodViewDlg" widgetVar="CfgPaymentmethodViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCfgPaymentmethodTitle}">
+            <h:form id="CfgPaymentmethodViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cfgPaymentmethodController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCfgPaymentmethodLabel_pkCfgPaymentmethodId}"/>
+                        <h:outputText value="#{cfgPaymentmethodController.selected.pkCfgPaymentmethodId}" title="#{bundle.ViewCfgPaymentmethodTitle_pkCfgPaymentmethodId}"/>
+                        <h:outputText value="#{bundle.ViewCfgPaymentmethodLabel_paymentmethodName}"/>
+                        <h:outputText value="#{cfgPaymentmethodController.selected.paymentmethodName}" title="#{bundle.ViewCfgPaymentmethodTitle_paymentmethodName}"/>
+                        <h:outputText value="#{bundle.ViewCfgPaymentmethodLabel_paymentmethodDescription}"/>
+                        <h:outputText value="#{cfgPaymentmethodController.selected.paymentmethodDescription}" title="#{bundle.ViewCfgPaymentmethodTitle_paymentmethodDescription}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CfgPaymentmethodViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

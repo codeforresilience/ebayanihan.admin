@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectAccountingMappingViewDlg" widgetVar="ProjectAccountingMappingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProjectAccountingMappingTitle}">
+            <h:form id="ProjectAccountingMappingViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectAccountingMappingController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProjectAccountingMappingLabel_pkProjectAccountingMappingId}"/>
+                        <h:outputText value="#{projectAccountingMappingController.selected.pkProjectAccountingMappingId}" title="#{bundle.ViewProjectAccountingMappingTitle_pkProjectAccountingMappingId}"/>
+                        <h:outputText value="#{bundle.ViewProjectAccountingMappingLabel_reviewStatus}"/>
+                        <h:outputText value="#{projectAccountingMappingController.selected.reviewStatus}" title="#{bundle.ViewProjectAccountingMappingTitle_reviewStatus}"/>
+                        <h:outputText value="#{bundle.ViewProjectAccountingMappingLabel_remarks}"/>
+                        <h:outputText value="#{projectAccountingMappingController.selected.remarks}" title="#{bundle.ViewProjectAccountingMappingTitle_remarks}"/>
+                        <h:outputText value="#{bundle.ViewProjectAccountingMappingLabel_fkProjectId}"/>
+                        <h:outputText value="#{projectAccountingMappingController.selected.fkProjectId}" title="#{bundle.ViewProjectAccountingMappingTitle_fkProjectId}"/>
+                        <h:outputText value="#{bundle.ViewProjectAccountingMappingLabel_fkAppuserId}"/>
+                        <h:outputText value="#{projectAccountingMappingController.selected.fkAppuserId}" title="#{bundle.ViewProjectAccountingMappingTitle_fkAppuserId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProjectAccountingMappingViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

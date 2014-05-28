@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectCategoryMappingCreateDlg" widgetVar="ProjectCategoryMappingCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjectCategoryMappingTitle}">
+            <h:form id="ProjectCategoryMappingCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectCategoryMappingController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjectCategoryMappingLabel_pkProjectCategoryMappingId}" for="pkProjectCategoryMappingId" />
+                        <p:inputText id="pkProjectCategoryMappingId" value="#{projectCategoryMappingController.selected.pkProjectCategoryMappingId}" title="#{bundle.CreateProjectCategoryMappingTitle_pkProjectCategoryMappingId}" required="true" requiredMessage="#{bundle.CreateProjectCategoryMappingRequiredMessage_pkProjectCategoryMappingId}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectCategoryMappingLabel_fkProjectId}" for="fkProjectId" />
+                        <p:selectOneMenu id="fkProjectId" value="#{projectCategoryMappingController.selected.fkProjectId}" required="true" requiredMessage="#{bundle.EditProjectCategoryMappingRequiredMessage_fkProjectId}">
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="fkProjectIdItem"
+                                           itemValue="#{fkProjectIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjectCategoryMappingLabel_fkProjectCategoryId}" for="fkProjectCategoryId" />
+                        <p:selectOneMenu id="fkProjectCategoryId" value="#{projectCategoryMappingController.selected.fkProjectCategoryId}" required="true" requiredMessage="#{bundle.EditProjectCategoryMappingRequiredMessage_fkProjectCategoryId}">
+                            <f:selectItems value="#{cfgProjectCategoryController.itemsAvailableSelectOne}"
+                                           var="fkProjectCategoryIdItem"
+                                           itemValue="#{fkProjectCategoryIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectCategoryMappingController.create}" value="#{bundle.Save}" update="display,:ProjectCategoryMappingListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjectCategoryMappingCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectCategoryMappingCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

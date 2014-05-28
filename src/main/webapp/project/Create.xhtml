@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProjectCreateDlg" widgetVar="ProjectCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProjectTitle}">
+            <h:form id="ProjectCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{projectController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_pkProjectId}" for="pkProjectId" />
+                        <p:inputText id="pkProjectId" value="#{projectController.selected.pkProjectId}" title="#{bundle.CreateProjectTitle_pkProjectId}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_pkProjectId}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_projectTitle}" for="projectTitle" />
+                        <p:inputText id="projectTitle" value="#{projectController.selected.projectTitle}" title="#{bundle.CreateProjectTitle_projectTitle}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectTitle}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_projectDescription}" for="projectDescription" />
+                        <p:inputText id="projectDescription" value="#{projectController.selected.projectDescription}" title="#{bundle.CreateProjectTitle_projectDescription}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectDescription}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_projectCmslink}" for="projectCmslink" />
+                        <p:inputText id="projectCmslink" value="#{projectController.selected.projectCmslink}" title="#{bundle.CreateProjectTitle_projectCmslink}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectCmslink}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_startDate}" for="startDate" />
+                        <p:calendar id="startDate" pattern="MM/dd/yyyy" value="#{projectController.selected.startDate}" title="#{bundle.EditProjectTitle_startDate}" required="true" requiredMessage="#{bundle.EditProjectRequiredMessage_startDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_endDate}" for="endDate" />
+                        <p:calendar id="endDate" pattern="MM/dd/yyyy" value="#{projectController.selected.endDate}" title="#{bundle.EditProjectTitle_endDate}" required="true" requiredMessage="#{bundle.EditProjectRequiredMessage_endDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_projectRegistrationDate}" for="projectRegistrationDate" />
+                        <p:calendar id="projectRegistrationDate" pattern="MM/dd/yyyy" value="#{projectController.selected.projectRegistrationDate}" title="#{bundle.EditProjectTitle_projectRegistrationDate}" required="true" requiredMessage="#{bundle.EditProjectRequiredMessage_projectRegistrationDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_maxVolunteerCount}" for="maxVolunteerCount" />
+                        <p:inputText id="maxVolunteerCount" value="#{projectController.selected.maxVolunteerCount}" title="#{bundle.CreateProjectTitle_maxVolunteerCount}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_maxVolunteerCount}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_projectStatus}" for="projectStatus" />
+                        <p:inputText id="projectStatus" value="#{projectController.selected.projectStatus}" title="#{bundle.CreateProjectTitle_projectStatus}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectStatus}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_addressStreet}" for="addressStreet" />
+                        <p:inputText id="addressStreet" value="#{projectController.selected.addressStreet}" title="#{bundle.CreateProjectTitle_addressStreet}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_addressStreet}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_addressUnit}" for="addressUnit" />
+                        <p:inputText id="addressUnit" value="#{projectController.selected.addressUnit}" title="#{bundle.CreateProjectTitle_addressUnit}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_addressUnit}"/>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_fkCfgBarangay}" for="fkCfgBarangay" />
+                        <p:selectOneMenu id="fkCfgBarangay" value="#{projectController.selected.fkCfgBarangay}" required="true" requiredMessage="#{bundle.EditProjectRequiredMessage_fkCfgBarangay}">
+                            <f:selectItems value="#{cfgBarangayController.itemsAvailableSelectOne}"
+                                           var="fkCfgBarangayItem"
+                                           itemValue="#{fkCfgBarangayItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProjectLabel_fkAppuserId}" for="fkAppuserId" />
+                        <p:selectOneMenu id="fkAppuserId" value="#{projectController.selected.fkAppuserId}" required="true" requiredMessage="#{bundle.EditProjectRequiredMessage_fkAppuserId}">
+                            <f:selectItems value="#{appuserController.itemsAvailableSelectOne}"
+                                           var="fkAppuserIdItem"
+                                           itemValue="#{fkAppuserIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{projectController.create}" value="#{bundle.Save}" update="display,:ProjectListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProjectCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProjectCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
